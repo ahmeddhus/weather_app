@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/src/constants/app_colors.dart';
 import 'package:weather_app/src/constants/app_shapes.dart';
+import 'package:weather_app/src/features/weather/application/providers.dart';
 
-class CitySearchBox extends StatefulWidget {
+class CitySearchBox extends ConsumerStatefulWidget {
   const CitySearchBox({super.key});
 
   @override
-  State<CitySearchBox> createState() => _CitySearchBoxState();
+  ConsumerState<CitySearchBox> createState() => _CitySearchBoxState();
 }
 
-class _CitySearchBoxState extends State<CitySearchBox> {
-  late final _searchController = TextEditingController(text: 'Alexandria');
+class _CitySearchBoxState extends ConsumerState<CitySearchBox> {
+  late final _searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.text = ref.read(cityProvider);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +44,14 @@ class _CitySearchBoxState extends State<CitySearchBox> {
                     ),
                   ),
                 ),
-                onSubmitted: (value) {},
+                onSubmitted: (value) => ref.read(cityProvider.notifier).state = value,
               ),
             ),
           ),
           InkWell(
             onTap: () {
               FocusScope.of(context).unfocus();
+              ref.read(cityProvider.notifier).state = _searchController.text;
             },
             child: Container(
               height: 50,

@@ -1,52 +1,81 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/src/features/weather/domain/weather.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
+import 'package:weather_app/src/features/weather/application/providers.dart';
+import 'package:weather_app/src/features/weather/domain/weather/weather_data.dart';
+import 'package:weather_app/src/features/weather/presentation/weather_icon_image.dart';
 
-final List<Weather> weathers = [
-  Weather('Thu', Icons.sunny_snowing, '14°'),
-  Weather('Sun', Icons.cloudy_snowing, '11°'),
-  Weather('Fri', Icons.sunny, '18°'),
-  Weather('Sat', Icons.cloud, '12°'),
-  Weather('Mon', Icons.cloudy_snowing, '12°'),
-];
-
-class HourlyWeather extends StatelessWidget {
+class HourlyWeather extends ConsumerWidget {
   const HourlyWeather({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final forecastDataValue = ref.watch(hourlyWeatherProvider);
+
+    return forecastDataValue.when(
+      data: (forecastData) {
+        final items = [0, 8, 16, 24, 32];
+        return HourlyWeatherRow(
+          weatherDataItems: [
+            for (var i in items) forecastData.list[i],
+          ],
+        );
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (e, __) => Text(e.toString()),
+    );
+  }
+}
+
+class HourlyWeatherRow extends StatelessWidget {
+  final List<WeatherData> weatherDataItems;
+
+  const HourlyWeatherRow({
+    Key? key,
+    required this.weatherDataItems,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: weathers
-          .map(
-            (e) => HourlyWeatherItem(weather: e),
-          )
+      children: weatherDataItems
+          .map((data) => HourlyWeatherItem(
+                weatherData: data,
+              ))
           .toList(),
     );
   }
 }
 
 class HourlyWeatherItem extends StatelessWidget {
-  final Weather weather;
+  final WeatherData weatherData;
 
-  const HourlyWeatherItem({super.key, required this.weather});
+  const HourlyWeatherItem({super.key, required this.weatherData});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     const fontWeight = FontWeight.normal;
+    final temp = weatherData.temp.celsius.toInt().toString();
 
     return Expanded(
       child: Column(
         children: <Widget>[
           Text(
-            weather.day,
-            style: textTheme.bodySmall!.copyWith(fontWeight: fontWeight),
+            DateFormat.E().format(weatherData.date),
+            style: textTheme.bodySmall!.copyWith(
+              fontWeight: fontWeight,
+            ),
           ),
           const SizedBox(height: 8),
-          Icon(weather.icon, size: 47),
+          WeatherIconImage(
+            iconUrl: weatherData.iconUrl,
+            size: 48,
+          ),
           const SizedBox(height: 8),
           Text(
-            weather.degree,
+            '$temp°',
             style: textTheme.bodyLarge!.copyWith(fontWeight: fontWeight),
           ),
         ],
