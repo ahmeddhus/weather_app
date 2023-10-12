@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/src/constants/app_colors.dart';
 import 'package:weather_app/src/features/weather/presentation/city_search_box.dart';
 import 'package:weather_app/src/features/weather/presentation/current_weather.dart';
+import 'package:weather_app/src/features/weather/presentation/hourly_weather.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
@@ -27,6 +28,8 @@ class WeatherPage extends StatelessWidget {
               CitySearchBox(),
               Spacer(),
               CurrentWeather(),
+              Spacer(),
+              HourlyWeather(),
               Spacer(),
             ],
           ),
