@@ -10,7 +10,7 @@ class CitySearchBox extends StatefulWidget {
 }
 
 class _CitySearchBoxState extends State<CitySearchBox> {
-  late final _searchController = TextEditingController();
+  late final _searchController = TextEditingController(text: 'Alexandria');
 
   @override
   Widget build(BuildContext context) {
