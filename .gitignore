@@ -45,3 +45,4 @@ app.*.map.json
 /pubspec.lock
 /macos/Podfile
 /ios/Podfile
+/macos/Flutter/GeneratedPluginRegistrant.swift
