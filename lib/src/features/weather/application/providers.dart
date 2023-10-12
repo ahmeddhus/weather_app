@@ -4,7 +4,7 @@ import 'package:weather_app/src/features/weather/domain/forecast/forecast_data.d
 import 'package:weather_app/src/features/weather/domain/weather/weather_data.dart';
 
 final cityProvider = StateProvider<String>((ref) {
-  return 'Alexandria';
+  return 'Egypt';
 });
 
 final currentWeatherProvider = FutureProvider.autoDispose<WeatherData>((ref) async {

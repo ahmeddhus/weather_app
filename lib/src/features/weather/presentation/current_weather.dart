@@ -16,7 +16,7 @@ class CurrentWeather extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Text('Alexandria', style: textTheme.headlineMedium),
+        Text(city, style: textTheme.headlineMedium),
         weatherDataValue.when(
           data: (data) => CurrentWeatherContents(weatherData: data),
           loading: () => const Center(child: CircularProgressIndicator()),
