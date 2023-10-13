@@ -10,10 +10,9 @@ by [Andrea Bizzotto](https://github.com/bizz84) [open_weather_example_flutter](h
 ## Application layers
 
 - [Data Layer](https://codewithandrea.com/articles/flutter-app-architecture-domain-model/)
-  with [Repository patter](https://codewithandrea.com/articles/flutter-repository-pattern/)
+  with [Repository pattern](https://codewithandrea.com/articles/flutter-repository-pattern/)
 - [Application Layer](https://codewithandrea.com/articles/flutter-app-architecture-application-layer/)
 - [Presentation Layer](https://codewithandrea.com/articles/flutter-presentation-layer/)
--
 
 ## Packages in use
 
