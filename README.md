@@ -22,6 +22,9 @@ by [Andrea Bizzotto](https://github.com/bizz84) [open_weather_example_flutter](h
 - [cached_network_image](https://pub.dev/packages/cached_network_image) for caching images
 - [mocktail](https://pub.dev/packages/mocktail) for testing
 
+
+
+
 for more about architecture:
 
 - [Flutter App Architecture with Riverpod: An Introduction](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction)
