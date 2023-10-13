@@ -29,5 +29,7 @@ for more about architecture:
 - [Flutter Project Structure: Feature-first or Layer-first?](https://codewithandrea.com/articles/flutter-project-structure/)
 - [A Comparison of Popular Flutter App Architectures](https://codewithandrea.com/articles/comparison-flutter-app-architectures/)
 
+
+
 **Note**: to use the API you'll need to register an account and obtain your own API key. This can be
 set via `--dart-define` or inside `lib/src/api/api_keys.dart`.
