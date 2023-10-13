@@ -1,5 +1,5 @@
 name: weather_app
-description: A new Flutter project.
+description: Flutter Weather App Example using the OpenWeatherMap API.
 
 publish_to: 'none'
 
