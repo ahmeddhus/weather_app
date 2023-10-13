@@ -25,7 +25,7 @@ by [Andrea Bizzotto](https://github.com/bizz84) [open_weather_example_flutter](h
 
 
 
-for more about architecture:
+## More about architecture:
 
 - [Flutter App Architecture with Riverpod: An Introduction](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction)
 - [Flutter Project Structure: Feature-first or Layer-first?](https://codewithandrea.com/articles/flutter-project-structure/)
