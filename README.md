@@ -7,7 +7,7 @@ by [Andrea Bizzotto](https://github.com/bizz84) [open_weather_example_flutter](h
 
 <img src="https://github.com/ahmeddhus/weather_app/blob/update_readme/.github/images/weather-forecast.png?raw=true" alt="Flutter Weather App Preview" width=50% height=50%>
 
-## [Application layers](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction)
+## Application layers
 
 - [Data Layer](https://codewithandrea.com/articles/flutter-app-architecture-domain-model/)
   with [Repository patter](https://codewithandrea.com/articles/flutter-repository-pattern/)
