@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/src/features/weather/application/providers.dart';
+import 'package:weather_app/src/features/weather/application/temperature_extension.dart';
 import 'package:weather_app/src/features/weather/domain/weather/weather_data.dart';
 import 'package:weather_app/src/features/weather/presentation/weather_icon_image.dart';
 
@@ -57,7 +58,6 @@ class HourlyWeatherItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     const fontWeight = FontWeight.normal;
-    final temp = weatherData.temp.celsius.toInt().toString();
 
     return Expanded(
       child: Column(
@@ -75,7 +75,7 @@ class HourlyWeatherItem extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$temp°',
+            weatherData.temp.witDegree,
             style: textTheme.bodyLarge!.copyWith(fontWeight: fontWeight),
           ),
         ],

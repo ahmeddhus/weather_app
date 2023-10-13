@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/src/features/weather/application/providers.dart';
+import 'package:weather_app/src/features/weather/application/temperature_extension.dart';
 import 'package:weather_app/src/features/weather/domain/weather/weather_data.dart';
 import 'package:weather_app/src/features/weather/presentation/weather_icon_image.dart';
 
@@ -36,17 +37,12 @@ class CurrentWeatherContents extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    final temp = weatherData.temp.celsius.toInt().toString();
-    final minTemp = weatherData.minTemp.celsius.toInt().toString();
-    final maxTemp = weatherData.maxTemp.celsius.toInt().toString();
-    final highAndLow = 'H:$maxTemp° L:$minTemp°';
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         WeatherIconImage(iconUrl: weatherData.iconUrl, size: 120),
-        Text(temp, style: textTheme.displayMedium),
-        Text(highAndLow, style: textTheme.bodyMedium),
+        Text(weatherData.temp.witDegree, style: textTheme.displayMedium),
+        Text(weatherData.highAndLowTemperature, style: textTheme.bodyMedium),
       ],
     );
   }

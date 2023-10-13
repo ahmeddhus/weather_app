@@ -1,16 +1,18 @@
-import 'package:weather_app/src/features/weather/domain/temperature.dart';
+import 'package:weather_app/src/features/weather/application/temperature_extension.dart';
 import 'package:weather_app/src/features/weather/domain/weather/weather.dart';
 
 /// Derived model class used in the UI
 class WeatherData {
-  final Temperature temp;
-  final Temperature minTemp;
-  final Temperature maxTemp;
+  final double temp;
+  final double minTemp;
+  final double maxTemp;
   final String description;
   final DateTime date;
   final String icon;
 
   String get iconUrl => "https://openweathermap.org/img/wn/$icon@2x.png";
+
+  String get highAndLowTemperature => 'H:${maxTemp.witDegree} L:${maxTemp.witDegree}°';
 
   WeatherData({
     required this.temp,
@@ -23,9 +25,9 @@ class WeatherData {
 
   factory WeatherData.from(Weather weather) {
     return WeatherData(
-      temp: Temperature.celsius(weather.weatherParams.temp),
-      minTemp: Temperature.celsius(weather.weatherParams.tempMin),
-      maxTemp: Temperature.celsius(weather.weatherParams.tempMax),
+      temp: weather.weatherParams.temp,
+      minTemp: weather.weatherParams.tempMin,
+      maxTemp: weather.weatherParams.tempMax,
       description: weather.weatherInfo[0].main,
       date: DateTime.fromMillisecondsSinceEpoch(weather.dt * 1000),
       icon: weather.weatherInfo[0].icon,
